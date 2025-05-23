@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Auto Detailing - Your Car Detailing Experts</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo scroll-link">
+                <i class="fas fa-car"></i>Elite Auto Detailing
+            </a>
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="scroll-link">Home</a></li>
+                <li><a href="#services" class="scroll-link">Services</a></li>
+                <li><a href="#gallery" class="scroll-link">Gallery</a></li>
+                <li><a href="#about" class="scroll-link">About</a></li>
+                <li><a href="#contact" class="scroll-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero" style="background-image: url('{{ url_for('static', filename='images/hero-bg.jpg') }}');">
+        <div class="hero-content">
+            <h1>Your Car Deserves the Best Detailing</h1>
+            <p>Experience unparalleled shine and protection for your vehicle.</p>
+            <a href="#contact" class="btn scroll-link">Get a Quote</a>
+        </div>
+    </section>
+
+    
+    <section id="services" class="section">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-car-side"></i>
+                <h3>Exterior Detailing</h3>
+                <p>Full wash, wax, paint correction, ceramic coating, wheel cleaning.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-chair"></i>
+                <h3>Interior Detailing</h3>
+                <p>Vacuuming, shampooing, leather conditioning, odor removal, sanitization.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-spray-can"></i>
+                <h3>Paint Correction</h3>
+                <p>Removal of swirl marks, scratches, and oxidation for a flawless finish.</p>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="gallery" class="section">
+        <h2>Our Work Gallery</h2>
+        <div class="gallery-grid">
+            {% for image in gallery_images %}
+            <div class="gallery-item" style="background-image: url('{{ url_for('static', filename='images/gallery/' + image.filename) }}');"
+                 title="{{ image.title }}: {{ image.description }}">
+                </div>
+            {% else %}
+            <p style="grid-column: 1 / -1; text-align: center;">No gallery images available yet.</p>
+            {% endfor %}
+        </div>
+    </section>
+<section id="features" class="section">
+        <h2>Why Choose Us?</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-check-circle"></i>
+                <h3>Expert Technicians</h3>
+                <p>Our team comprises highly skilled and experienced detailing specialists.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-hand-sparkles"></i>
+                <h3>Premium Products</h3>
+                <p>We use only the highest quality, professional-grade detailing products.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Long-lasting Protection</h3>
+                <p>Beyond clean, we ensure your vehicle is protected against elements.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="about" class="section">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Welcome to Elite Auto Detailing, where passion meets precision. With years of experience in the auto detailing industry, we are dedicated to providing the highest quality car care services in [Your City/Region]. Our mission is to restore and protect your vehicle's appearance, making it look as good as, or even better than, new.</p>
+                <p>We believe that every car deserves meticulous attention to detail. That's why we use only premium, eco-friendly products and state-of-the-art techniques to deliver exceptional results. From a simple wash and wax to advanced paint correction and ceramic coatings, we tailor our services to meet your specific needs and exceed your expectations.</p>
+                <p>At Elite Auto Detailing, your satisfaction is our priority. Let us bring the shine back to your ride!</p>
+            </div>
+            <div class="about-image" style="background-image: url('{{ url_for('static', filename='images/about-us-bg.jpg') }}'); background-size: cover; background-position: center;">
+                {% if not url_for('static', filename='images/about-us-bg.jpg') %}
+                    <i class="fas fa-building"></i>
+                {% endif %}
+            </div>
+        </div>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">5+</div>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <p>Cars Detailed</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">99%</div>
+                <p>Customer Satisfaction</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">Ready to give your car the elite treatment? Get in touch with us!</p>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <i class="fas fa-phone"></i>
+                <h3>Call Us</h3>
+                <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email Us</h3>
+                <p><a href="mailto:info@eliteautodetailing.com">info@eliteautodetailing.com</a></p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Visit Us</h3>
+                <p>123 Detailing Lane, Autocity, CA 90210</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <p>Or fill out our quick inquiry form:</p>
+            <form action="#" method="POST" style="max-width: 500px; margin: 1rem auto; padding: 2rem; background: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <input type="text" name="name" placeholder="Your Name" required style="width: calc(100% - 20px); padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px;">
+                <input type="email" name="email" placeholder="Your Email" required style="width: calc(100% - 20px); padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px;">
+                <textarea name="message" placeholder="Your Message" rows="5" required style="width: calc(100% - 20px); padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; resize: vertical;"></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; {{ current_year }} Elite Auto Detailing. All rights reserved.</p>
+        <p>Professional car detailing services you can trust.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        const scrollLinks = document.querySelectorAll('.scroll-link');
+
+        // Toggle mobile menu visibility
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Add smooth scrolling to all .scroll-link elements
+        scrollLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default anchor jump
+
+                // Get the target section's ID from the href
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+
+                if (targetSection) {
+                    // Close the mobile menu if it's open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+
+                    // Scroll to the target section
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth' // Enable smooth scrolling
+                    });
+
+                    // Update URL hash without causing a jump (optional, for direct linking)
+                    // Use replaceState to avoid adding to browser history if just scrolling
+                    history.replaceState(null, '', `#${targetId}`);
+                }
+            });
+        });
+
+        // Handle initial load if URL has a hash (e.g., user directly goes to yoursite.com/#services)
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.location.hash) {
+                const targetId = window.location.hash.substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    // Use a slight delay to ensure the page has rendered before scrolling
+                    // and to account for fixed header
+                    setTimeout(() => {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }, 100); // Small delay
+                }
+            }
+        });
+    </script>
+</body>
+</html>

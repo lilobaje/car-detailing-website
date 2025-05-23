@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Gallery - Elite Auto Detailing{% endblock %}
+
+{% block content %}
+<div style="margin-top: 80px;"></div>
+<section class="section">
+    <h2>Our Work Gallery</h2>
+    <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">
+        See the transformation - before and after shots of our detailed vehicles
+    </p>
+    <div class="gallery-grid">
+        {% for image in gallery_images %}
+        <div class="gallery-item" style="background-image: url('{{ url_for('static', filename='images/gallery/' + image.filename) }}');">
+            <div class="gallery-overlay">
+                <h4>{{ image.title }}</h4>
+                <p>{{ image.description }}</p>
+            </div>
+        </div>
+        {% else %}
+        <!-- Fallback when no images are available -->
+        <div class="gallery-item no-image">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0,0,0,0.7); padding: 5px 10px; border-radius: 5px;">
+                Luxury Sedan - Full Detail
+            </div>
+        </div>
+        <div class="gallery-item no-image">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0,0,0,0.7); padding: 5px 10px; border-radius: 5px;">
+                SUV - Ceramic Coating
+            </div>
+        </div>
+        <div class="gallery-item no-image">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0,0,0,0.7); padding: 5px 10px; border-radius: 5px;">
+                Sports Car - Paint Correction
+            </div>
+        </div>
+        <div class="gallery-item no-image">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0,0,0,0.7); padding: 5px 10px; border-radius: 5px;">
+                Truck - Interior Detail
+            </div>
+        </div>
+        <div class="gallery-item no-image">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0,0,0,0.7); padding: 5px 10px; border-radius: 5px;">
+                Classic Car - Restoration Detail
+            </div>
+        </div>
+        <div class="gallery-item no-image">
+            <div style="position: absolute; bottom: 10px; left: 10px; color: white; background: rgba(0,0,0,0.7); padding: 5px 10px; border-radius: 5px;">
+                Motorcycle - Premium Wash
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
