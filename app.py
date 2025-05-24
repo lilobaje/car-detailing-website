@@ -47,7 +47,7 @@ GALLERY_IMAGES = [
 def index():
     current_year = datetime.datetime.now().year
     # Render the base.html template, passing all necessary data
-    return render_template('api/index.html', 
+    return render_template('index.html', 
                            current_year=current_year,
                            gallery_images=GALLERY_IMAGES)
 
