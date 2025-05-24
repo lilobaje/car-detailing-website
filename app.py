@@ -5,8 +5,8 @@ import os
 app = Flask(__name__)
 
 # Ensure static directories exist (good practice to keep)
-os.makedirs('static/images/gallery', exist_ok=True)
-os.makedirs('static/images', exist_ok=True)
+# os.makedirs('static/images/gallery', exist_ok=True)
+# os.makedirs('static/images', exist_ok=True)
 
 # Define your gallery images list
 GALLERY_IMAGES = [
